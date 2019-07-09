@@ -1,0 +1,7 @@
+.task.done{
+  background: lightgreen;
+}
+
+.task.todo{
+  background: lightgoldenrodyellow;
+}

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Task-Manager</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="custom_style.css" 'type="text/css"'>
   </head>
   <body>
-   <div id="app">
+   <div id="app" class="main">
 
      <!-- Beginning of sidebar-->
      <div class="ui sidebar inverted vertical menu visible fixed left">
       <div class="ui logo item">
-        <b><i class="icon tasks orange"></i>Task-Organizer</b>
+        <b><i class="icon tasks yellow"></i>Task-Organizer</b>
       </div>
       <div class="ui message blue">
         Use this tool to manage your tasks. Have fun!
@@ -24,14 +25,20 @@
 
      <div class="ui container pusher">
        <div class="ui grid">
-         <div class="six column wide">
-           <div class="todo" class="tasklist">
-             <div v-for='task in completedTasks'>
+         <div class="six wide column">
+           <div class="todo" class="tasklist" style="padding-top:2em;">
+             <div class="ui header">
+               <i class="icon play orange"></i>In Progress Tasks ({{ todoTasks.length }})
+             </div>
+             <div class="ui segment task" v-bind:class="task.completed ? 'done' : 'todo' " v-for='task in todoTasks'>
                Name : {{task.name}} description: {{task.description}} Status: {{task.completed}}
              </div>
            </div>
-           <div class="completed" class="tasklist">
-             <div v-for='task in todoTasks'>
+           <div class="completed" class="tasklist" style="padding-top:2em;">
+             <div class="ui header">
+               <i class="icon check circle green"></i>Completed Tasks! ({{ completedTasks.length }})
+             </div>
+             <div class="ui segment task" v-bind:class="task.completed ? 'done' : 'todo' " v-for='task in completedTasks'>
                Name : {{task.name}} description: {{task.description}} Status: {{task.completed}}
              </div>
            </div>
