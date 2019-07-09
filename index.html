@@ -4,11 +4,20 @@
     <meta charset="utf-8">
     <title>Task-Manager</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.2/dist/semantic.min.css">
   </head>
   <body>
    <div id="app">
-     {{ message }}
+     <div class="ui sidebar inverted vertical menu visible fixed left">
+      <div class="ui logo item">
+        Task-Organizer
+      </div>
+     </div>
+     <div class="ui container pusher">
+        {{ message }}
+     </div>
    </div>
   </body>
+  <script src="semantic/dist/semantic.min.js"></script>
   <script src="app.js"></script>
 </html>
