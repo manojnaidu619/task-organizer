@@ -23,9 +23,21 @@
      <!-- Main content-->
 
      <div class="ui container pusher">
-        <div v-for='task in tasks'>
-          Name : {{task.name}} description: {{task.description}} Status: {{task.completed}}
-        </div>
+       <div class="ui grid">
+         <div class="six column wide">
+           <div class="todo" class="tasklist">
+             <div v-for='task in completedTasks'>
+               Name : {{task.name}} description: {{task.description}} Status: {{task.completed}}
+             </div>
+           </div>
+           <div class="completed" class="tasklist">
+             <div v-for='task in todoTasks'>
+               Name : {{task.name}} description: {{task.description}} Status: {{task.completed}}
+             </div>
+           </div>
+         </div>
+       </div>
+
      </div>
 
      <!-- End of main content-->
