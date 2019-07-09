@@ -8,16 +8,29 @@
   </head>
   <body>
    <div id="app">
+
+     <!-- Beginning of sidebar-->
      <div class="ui sidebar inverted vertical menu visible fixed left">
       <div class="ui logo item">
-        Task-Organizer
+        <b><i class="icon tasks orange"></i>Task-Organizer</b>
+      </div>
+      <div class="ui message blue">
+        Use this tool to manage your tasks. Have fun!
       </div>
      </div>
+     <!-- End of sidebar -->
+
+     <!-- Main content-->
+
      <div class="ui container pusher">
-        {{ message }}
+        <div v-for='task in tasks'>
+          Name : {{task.name}} description: {{task.description}} Status: {{task.completed}}
+        </div>
      </div>
+
+     <!-- End of main content-->
+
    </div>
   </body>
-  <script src="semantic/dist/semantic.min.js"></script>
   <script src="app.js"></script>
 </html>
