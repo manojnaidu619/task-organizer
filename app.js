@@ -70,8 +70,13 @@ var app = new Vue({
 
         let taskId = this.nextId;
         let newTask = Object.assign({}, this.task);
-        this.tasks.push(newTask);
-        this.message = `Task ${taskId} Created!`;
+        if(newTask.name.length && newTask.description.length){
+          this.tasks.push(newTask);
+          this.message = `Task ${taskId} Created!`;
+        }else{
+          console.log('Please fill out the fields!');
+          this.message = `Please fill out the fields!`;
+        }
       },
       editTask: function(event,id){
         this.action = 'edit';
@@ -83,11 +88,11 @@ var app = new Vue({
       },
       updateTask: function (event, id){
         event.stopImmediatePropagation();
-        event.preventDefault();               // Enables async data transfer
+        event.preventDefault();
 
         let task = this.tasks.find(item => item.id == id);
 
-        if(task){
+        if(task && this.task.name && this.task.description){
           task.name = this.task.name;
           task.description = this.task.description;
           task.completed = this.task.completed;
