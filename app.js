@@ -39,8 +39,11 @@ var app = new Vue({
   },
     methods:{
       toggleDone: function(event,id){
-        console.log(event);
-        console.log(id);
+        let task = this.tasks.find(item => item.id == id);
+
+        if(task){
+          task.completed = !task.completed;
+        }
       }
     }
  });
