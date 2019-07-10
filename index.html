@@ -18,6 +18,9 @@
       <div class="ui message blue">
         Use this tool to manage your tasks. Have fun!
       </div>
+      <div class="ui message green" v-if="message">
+        {{ message }}
+      </div>
      </div>
      <!-- End of sidebar -->
 
@@ -64,12 +67,12 @@
 
                   <div class="field">
                     <label>Name</label>
-                    <input type="text" name="name" placeholder="Name" required="true" v-model="task.name" />
+                    <input type="text" name="name" placeholder="Name" required="true" autocomplete="off" v-model="task.name" />
                   </div>
 
                   <div class="field">
                     <label>Description</label>
-                    <input type="text" name="description" placeholder="Description" required="true" v-model="task.description" />
+                    <input type="text" name="description" placeholder="Description" required="true" autocomplete="off" v-model="task.description" />
                   </div>
 
                   <div class="field inline">
@@ -80,7 +83,7 @@
                   <button class="ui button orange" type="submit" v-if="action == 'create'" v-on:click="createTask($event, task.id)">Create</button>
                   <button class="ui button green" type="submit" v-if="action == 'edit'" v-on:click="updateTask($event, task.id)">Update</button>
                 </form>
-              </div> 
+              </div>
             </div>
           </div>
          </div>

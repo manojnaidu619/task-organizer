@@ -30,7 +30,8 @@ var app = new Vue({
       {id:4, name: 'Task 5', description: "What's hanging out here!", completed: true}
     ],
     task: {},
-    action: 'create'
+    action: 'create',
+    message: ''
   },
   computed: {
     completedTasks: function(){
@@ -47,6 +48,7 @@ var app = new Vue({
       clear: function(){
         this.task = {};
         this.action = 'create';
+        this.message;
       },
       toggleDone: function(event,id){
         event.stopImmediatePropagation();
@@ -54,6 +56,7 @@ var app = new Vue({
 
         if(task){
           task.completed = !task.completed;
+          this.message = `Task ${id} Updated!`
         }
       },
       createTask: function(event) {
@@ -68,6 +71,7 @@ var app = new Vue({
         let taskId = this.nextId;
         let newTask = Object.assign({}, this.task);
         this.tasks.push(newTask);
+        this.message = `Task ${taskId} Created!`;
       },
       editTask: function(event,id){
         this.action = 'edit';
@@ -87,6 +91,7 @@ var app = new Vue({
           task.name = this.task.name;
           task.description = this.task.description;
           task.completed = this.task.completed;
+          this.message = `Task ${id} Updated!`
         }
       },
       deleteTask: function(event, id){
@@ -95,6 +100,7 @@ var app = new Vue({
         let taskIndex = this.tasks.findIndex(item => item.id == id);
         if(taskIndex > -1){
           this.$delete(this.tasks, taskIndex);
+          this.message = `Task ${id} Deleted!`
         }
       }
     }
