@@ -29,7 +29,8 @@ var app = new Vue({
       {id:3, name: 'Task 3', description: 'some ranodm one', completed: true},
       {id:4, name: 'Task 4', description: 'Chill,for fun!', completed: false},
       {id:5, name: 'Task 5', description: 'Just hanging out here!', completed: true}
-    ]
+    ],
+    task: {},
   },
   computed: {
     completedTasks: function(){
@@ -50,10 +51,26 @@ var app = new Vue({
       },
       editTask: function(event,id){
         let task = this.tasks.find(item => item.id == id);
-        console.log(task);
+
+        if(task){
+          this.task = {id: id, name: task.name, description: task.description, completed: task.completed};
+        }
+      },
+      updateTask: function (event, id){
+        event.stopImmediatePropagation();
+        event.preventDefault();               // Enables async data transfer
+
+        let task = this.tasks.find(item => item.id == id);
+
+        if(task){
+          task.name = this.task.name;
+          task.description = this.task.description;
+          task.completed = this.task.completed;
+        }
       },
       deleteTask: function(event, id){
         event.stopImmediatePropagation();
+
         let taskIndex = this.tasks.findIndex(item => item.id == id);
         if(taskIndex > -1){
           this.$delete(this.tasks, taskIndex);

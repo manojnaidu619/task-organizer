@@ -45,7 +45,7 @@
            </div>
           </div>
 
-          <div class="six wide column">
+          <div class="six wide column" style="padding-top:5em;">
             <div id="editor" class="ui raised segment green">
               <div class="ui header grid">
                 <div class="left nine wide column">
@@ -56,7 +56,27 @@
                 </div>
               </div>
               <div class="ui segment">
-                <form class="ui form"></form>
+                <form class="ui form" v-on:submit="updateTask($event, task.id)">
+
+                  <input type="hidden" name="id" v-model="task.id">
+
+                  <div class="field">
+                    <label>Name</label>
+                    <input type="text" name="name" placeholder="Name" required="true" v-model="task.name" />
+                  </div>
+
+                  <div class="field">
+                    <label>Description</label>
+                    <input type="text" name="description" placeholder="Description" required="true" v-model="task.description" />
+                  </div>
+
+                  <div class="field inline">
+                    <label>Completed</label>
+                    <input type="checkbox" v-model="task.completed">
+                  </div>
+
+                  <button class="ui button green" type="submit" v-on:click="updateTask($event, task.id)">Update</button>
+                </form>
               </div>
             </div>
           </div>
