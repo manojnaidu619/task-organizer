@@ -52,7 +52,7 @@
                   <i class="icon edit violet"></i> Details
                 </div>
                 <div class="right float five wide column">
-                    <button type="button" class="ui green button right float">
+                    <button type="button" class="ui green button right float" v-on:click="clear">
                       <i class="icon plus circle"></i>New
                     </button>
                 </div>
@@ -77,9 +77,10 @@
                     <input type="checkbox" v-model="task.completed">
                   </div>
 
-                  <button class="ui button green" type="submit" v-on:click="updateTask($event, task.id)">Update</button>
+                  <button class="ui button orange" type="submit" v-if="action == 'create'" v-on:click="createTask($event, task.id)">Create</button>
+                  <button class="ui button green" type="submit" v-if="action == 'edit'" v-on:click="updateTask($event, task.id)">Update</button>
                 </form>
-              </div>
+              </div> 
             </div>
           </div>
          </div>
