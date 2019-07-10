@@ -30,17 +30,18 @@
              <div class="ui header">
                <i class="icon play orange"></i>In Progress Tasks ({{ todoTasks.length }})
              </div>
-             <div class="ui segment task" v-bind:class="task.completed ? 'done' : 'todo' " v-for='task in todoTasks'>
-               Name : {{task.name}} description: {{task.description}} Status: {{task.completed}}
+              <task
+               v-bind:task="task"
+               v-for="task in todoTasks" />
              </div>
            </div>
            <div class="completed" class="tasklist" style="padding-top:2em;">
              <div class="ui header">
                <i class="icon check circle green"></i>Completed Tasks! ({{ completedTasks.length }})
              </div>
-             <div class="ui segment task" v-bind:class="task.completed ? 'done' : 'todo' " v-for='task in completedTasks'>
-               Name : {{task.name}} description: {{task.description}} Status: {{task.completed}}
-             </div>
+             <task
+              v-bind:task="task"
+              v-for="task in completedTasks" />
            </div>
          </div>
        </div>
