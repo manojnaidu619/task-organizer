@@ -14,6 +14,7 @@ var app = new Vue({
                        </div>
                       </div>
                       <div class="right floated three wide column">
+                       <i class="icon pencil blue" alt="Edit" v-on:click="app.editTask($event, task.id)"></i>
                        <i class="icon trash red" alt="Delete" v-on:click="app.deleteTask($event, task.id)"></i>
                       </div>
                     </div>
@@ -46,6 +47,10 @@ var app = new Vue({
         if(task){
           task.completed = !task.completed;
         }
+      },
+      editTask: function(event,id){
+        let task = this.tasks.find(item => item.id == id);
+        console.log(task);
       },
       deleteTask: function(event, id){
         event.stopImmediatePropagation();
