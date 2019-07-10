@@ -10,3 +10,7 @@
   color: slategrey;
   font-weight: bold;
 }
+
+.task.done label{
+  text-decoration: line-through;
+}
