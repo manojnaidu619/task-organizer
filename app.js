@@ -70,7 +70,7 @@ var app = new Vue({
 
         let taskId = this.nextId;
         let newTask = Object.assign({}, this.task);
-        if(newTask.name.length && newTask.description.length){
+        if(newTask.name.length && newTask.description.length ){
           this.tasks.push(newTask);
           this.message = `Task ${taskId} Created!`;
         }else{
