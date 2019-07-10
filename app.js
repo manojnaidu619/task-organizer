@@ -24,11 +24,10 @@ var app = new Vue({
     },
   data: {
     tasks: [
-      {id:1, name: 'Task 1', description: 'Just some ranodm one', completed: true},
-      {id:2, name: 'Task 2', description: 'Just as it is!', completed: false},
-      {id:3, name: 'Task 3', description: 'some ranodm one', completed: true},
-      {id:4, name: 'Task 4', description: 'Chill,for fun!', completed: false},
-      {id:5, name: 'Task 5', description: 'Just hanging out here!', completed: true}
+      {id:1, name: 'Task 1', description: 'Just some random one', completed: true},
+      {id:2, name: 'Task 2', description: 'Fun as it is!', completed: false},
+      {id:3, name: 'Task 4', description: 'Chill,for fun!', completed: false},
+      {id:4, name: 'Task 5', description: "What's hanging out here!", completed: true}
     ],
     task: {},
     action: 'create'
@@ -39,6 +38,9 @@ var app = new Vue({
     },
     todoTasks: function(){
       return this.tasks.filter(item => item.completed == false);
+    },
+    nextId: function(){
+      return (this.tasks.sort(function(a,b){ return a.id - b.id; }))[this.tasks.length - 1].id+1;
     }
   },
     methods:{
@@ -53,6 +55,19 @@ var app = new Vue({
         if(task){
           task.completed = !task.completed;
         }
+      },
+      createTask: function(event) {
+        event.preventDefault();
+
+        if(!this.task.completed){
+          this.task.completed = false;
+        }else{
+          this.task.completed = true;
+        }
+
+        let taskId = this.nextId;
+        let newTask = Object.assign({}, this.task);
+        this.tasks.push(newTask);
       },
       editTask: function(event,id){
         this.action = 'edit';
