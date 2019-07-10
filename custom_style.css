@@ -5,3 +5,8 @@
 .task.todo{
   background: lightgoldenrodyellow;
 }
+
+.description{
+  color: slategrey;
+  font-weight: bold;
+}
